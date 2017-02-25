@@ -13,7 +13,7 @@ div, footer, nav {
     margin-bottom: 20px;
 }
 
-input {
+input, select {
     margin-right: 10px;
 }
 
@@ -47,7 +47,7 @@ footer a {
     margin: 10px 0;
 }
 
-.list input[type="text"] {
+.list input[type="text"], select {
     background-color: #37007a;
     border: 0;
     border-bottom: 2px solid #cc66ff;
@@ -56,6 +56,10 @@ footer a {
     font-size: 24px;
     padding: 10px;
     width: 185px;
+}
+
+select {
+    height: 52px;
 }
 
 .list input[type="submit"] {

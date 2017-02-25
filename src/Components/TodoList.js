@@ -4,15 +4,26 @@ import TodoAdd from './TodoAdd';
 
 class TodoList extends React.Component {
 
+    constructor() {
+        super();
+        this.state = {
+            todos: this.initTodos(),
+            categories: this.initCategories(),
+        };
+    }
+
     initTodos() {
         return [];
     }
 
-    constructor() {
-        super();
-        this.state = {
-            todos: this.initTodos()
-        };
+    initCategories() {
+        return [
+            "Private",
+            "Work",
+            "Free time",
+            "School",
+            "Shopping"
+        ];
     }
 
     addTodo(title, category) {
@@ -28,14 +39,14 @@ class TodoList extends React.Component {
 
     getTodosList() {
         return this.state.todos.map(v =>
-            <li key={v.id} className={`completed-${v.completed}`}>{v.title}</li>
+            <li key={v.id} className={`completed-${v.completed}`}>{v.title} ({this.state.categories[v.category]}, added: {v.added})</li>
         );
     }
 
     render() {
         return (
             <ul className="list">
-                <li><TodoAdd callbackAddTodo={this.addTodo.bind(this)} /></li>
+                <li><TodoAdd addTodo={this.addTodo.bind(this)} categories={this.state.categories}/></li>
                 {this.getTodosList()}
             </ul>
         );
