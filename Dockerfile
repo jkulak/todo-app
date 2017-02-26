@@ -8,7 +8,8 @@ RUN echo -e 'http://dl-cdn.alpinelinux.org/alpine/edge/main\nhttp://dl-cdn.alpin
     apk add --no-cache yarn
 
 COPY package.json /app
-RUN yarn install --production
+RUN yarn install
+# RUN yarn install --production
 
 COPY . /app
 
@@ -20,4 +21,4 @@ RUN echo 'alias l="ls -la"' >> /etc/profile
 # /app/node_modules/.bin to the global PATH variable
 RUN echo 'export PATH="/app/node_modules/.bin:${PATH}"' >> /etc/profile
 
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
