@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Navbar from './Navbar';
-import Footer from './Footer';
-import TodoList from './TodoList';
+import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer/Footer';
+import TodoList from '../TodoList/TodoList';
 
 class App extends React.Component {
 

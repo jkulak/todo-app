@@ -1,8 +1,8 @@
 import React from 'react';
 import uuid from 'uuid';
 import moment from 'moment';
-import TodoAdd from './TodoAdd';
-import TodoItem from './TodoItem';
+import TodoAdd from '../TodoAdd/TodoAdd';
+import TodoItem from '../TodoItem/TodoItem';
 
 class TodoList extends React.Component {
 
@@ -95,7 +95,6 @@ class TodoList extends React.Component {
     }
 
     handleFilter(filter) {
-        console.log(filter, this.filters, this.filters.filter);
         this.setState({
             filter: this.filters[filter]
         });
