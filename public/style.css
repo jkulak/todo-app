@@ -55,6 +55,7 @@ footer a {
     display: inline;
     margin-right: 10px;
     cursor: pointer;
+    text-transform: lowercase;
 }
 
 .filters li.active {

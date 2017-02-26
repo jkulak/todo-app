@@ -2,6 +2,7 @@ import React from 'react';
 import uuid from 'uuid';
 import moment from 'moment';
 import TodoAdd from './TodoAdd';
+import TodoItem from './TodoItem';
 
 class TodoList extends React.Component {
 
@@ -89,9 +90,7 @@ class TodoList extends React.Component {
                     return true;
             }
         }).map(v =>
-            <li key={v.id} className={`completed-${v.completed}`} onClick={this.toggleDone.bind(this, v.id)}>
-                {v.title} ({this.state.categories[v.category]}) <span className="added">added {moment(v.added).fromNow()}</span>
-            </li>
+            <TodoItem key={v.id} categories={this.state.categories} todo={v} toggleDone={this.toggleDone}/>
         );
     }
 
@@ -110,7 +109,7 @@ class TodoList extends React.Component {
 
     render() {
         return (
-            <div>filter:
+            <div>filter:&nbsp;
                 <ul className="filters">
                     {this.renderFilters()}
                 </ul>
