@@ -28,21 +28,21 @@ class TodoList extends React.Component {
             {
                 title: "Buy shoes",
                 completed: false,
-                added: moment().toISOString(),
+                added: moment("2017-01-22").toISOString(),
                 category: 0,
                 id: uuid.v4()
             },
             {
                 title: "Sell everything",
                 completed: false,
-                added: moment().toISOString(),
+                added: moment("2017-02-22").toISOString(),
                 category: 0,
                 id: uuid.v4()
             },
             {
                 title: "Call the evangelist",
                 completed: true,
-                added: moment().toISOString(),
+                added: moment("2017-02-26 07:10:11").toISOString(),
                 category: 2,
                 id: uuid.v4()
             },

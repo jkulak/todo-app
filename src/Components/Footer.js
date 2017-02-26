@@ -4,7 +4,7 @@ class Footer extends React.Component{
     render(){
         return (
             <footer>
-                <p>by <a href="https://twitter.com/jakub_kulak">jkulak</a> with 🍷. Powered by ReactJS with Redux (<a href="https://github.com/jkulak/reactjs-redux-todo-app">repo</a>)</p>
+                <p>Made with 🍷 by <a href="https://twitter.com/jakub_kulak">jkulak</a>. Powered by ReactJS. Check this project on <a href="https://github.com/jkulak/todo-app">Github</a> 👌🏻</p>
             </footer>
         );
     }
