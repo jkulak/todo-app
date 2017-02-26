@@ -17,6 +17,10 @@ input, select {
     margin-right: 10px;
 }
 
+select {
+    height: 52px;
+}
+
 body {
     background-color: #2c015a;
     color: white;
@@ -42,6 +46,21 @@ footer a {
     color: rgba(255,255,255,0.5);
 }
 
+.filters {
+    list-style-type: none;
+    display: inline;
+}
+
+.filters li {
+    display: inline;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.filters li.active {
+    text-decoration: underline;
+}
+
 .list li {
     cursor: pointer;
     margin: 10px 0;
@@ -58,14 +77,15 @@ footer a {
     width: 185px;
 }
 
-select {
-    height: 52px;
-}
-
 .list input[type="submit"] {
     cursor: pointer;
     border: 0;
     background-color: inherit;
+}
+
+.added {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
 }
 
 li.completed-true {

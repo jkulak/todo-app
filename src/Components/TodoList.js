@@ -1,19 +1,51 @@
 import React from 'react';
 import uuid from 'uuid';
+import moment from 'moment';
 import TodoAdd from './TodoAdd';
 
 class TodoList extends React.Component {
+
+    filters = {
+        ALL: 'ALL',
+        DONE: 'DONE',
+        UNDONE: 'UNDONE'
+    }
 
     constructor() {
         super();
         this.state = {
             todos: this.initTodos(),
             categories: this.initCategories(),
+            filter: this.filters.ALL
         };
+
+        this.toggleDone = this.toggleDone.bind(this);
     }
 
     initTodos() {
-        return [];
+        return [
+            {
+                title: "Buy shoes",
+                completed: false,
+                added: moment().toISOString(),
+                category: 0,
+                id: uuid.v4()
+            },
+            {
+                title: "Sell everything",
+                completed: false,
+                added: moment().toISOString(),
+                category: 0,
+                id: uuid.v4()
+            },
+            {
+                title: "Call the evangelist",
+                completed: true,
+                added: moment().toISOString(),
+                category: 2,
+                id: uuid.v4()
+            },
+        ];
     }
 
     initCategories() {
@@ -30,25 +62,63 @@ class TodoList extends React.Component {
         const todo = {
             title,
             completed: false,
-            added: Math.floor(Date.now() / 1000),
+            added: moment().toISOString(),
             category,
             id: uuid.v4()
         };
         this.setState({todos: this.state.todos.concat(todo)})
     }
 
-    getTodosList() {
-        return this.state.todos.map(v =>
-            <li key={v.id} className={`completed-${v.completed}`}>{v.title} ({this.state.categories[v.category]}, added: {v.added})</li>
+    toggleDone(id) {
+        this.setState({
+            todos: this.state.todos.map(t => {
+                t.completed = t.id === id ? !t.completed : t.completed
+                return t;
+            })
+        })
+    }
+
+    renderTodos() {
+        return this.state.todos.filter(v => {
+            switch (this.state.filter) {
+                case this.filters.DONE:
+                    return v.completed === true;
+                case this.filters.UNDONE:
+                    return v.completed === false;
+                default:
+                    return true;
+            }
+        }).map(v =>
+            <li key={v.id} className={`completed-${v.completed}`} onClick={this.toggleDone.bind(this, v.id)}>
+                {v.title} ({this.state.categories[v.category]}) <span className="added">added {moment(v.added).fromNow()}</span>
+            </li>
+        );
+    }
+
+    handleFilter(filter) {
+        console.log(filter, this.filters, this.filters.filter);
+        this.setState({
+            filter: this.filters[filter]
+        });
+    }
+
+    renderFilters() {
+        return Object.keys(this.filters).map(v =>
+            <li key={v} className={this.state.filter === v ? "active" : ""} onClick={this.handleFilter.bind(this, v)}>{v}</li>
         );
     }
 
     render() {
         return (
-            <ul className="list">
-                <li><TodoAdd addTodo={this.addTodo.bind(this)} categories={this.state.categories}/></li>
-                {this.getTodosList()}
-            </ul>
+            <div>filter:
+                <ul className="filters">
+                    {this.renderFilters()}
+                </ul>
+                <ul className="list">
+                    <li><TodoAdd addTodo={this.addTodo.bind(this)} categories={this.state.categories}/></li>
+                    {this.renderTodos()}
+                </ul>
+            </div>
         );
     };
 }
