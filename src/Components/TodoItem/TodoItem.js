@@ -22,4 +22,19 @@ class TodoItem extends React.Component {
     };
 }
 
+TodoItem.defaultProps = {
+  todo: {
+      title: "Empty todo",
+      category: 0,
+      added: moment(),
+      completed: false
+  },
+  categories: []
+};
+
+TodoItem.propTypes = {
+  todo: React.PropTypes.object.isRequired,
+  categories: React.PropTypes.array.isRequired
+};
+
 export default TodoItem;

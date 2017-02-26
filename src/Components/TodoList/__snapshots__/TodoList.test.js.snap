@@ -1,0 +1,103 @@
+exports[`<TodoList /> should match its empty snapshot 1`] = `
+<div>
+  filter: 
+  <ul
+    className="filters">
+    <li
+      className="active"
+      onClick={[Function]}>
+      ALL
+    </li>
+    <li
+      className=""
+      onClick={[Function]}>
+      DONE
+    </li>
+    <li
+      className=""
+      onClick={[Function]}>
+      UNDONE
+    </li>
+  </ul>
+  <ul
+    className="list">
+    <li>
+      <form
+        onSubmit={[Function]}>
+        <input
+          autoFocus={true}
+          onChange={[Function]}
+          placeholder="Enter new todo..."
+          type="text"
+          value="" />
+        <select
+          onChange={[Function]}
+          value={0}>
+          <option
+            value={0}>
+            Private
+          </option>
+          <option
+            value={1}>
+            Work
+          </option>
+          <option
+            value={2}>
+            Free time
+          </option>
+          <option
+            value={3}>
+            School
+          </option>
+          <option
+            value={4}>
+            Shopping
+          </option>
+        </select>
+        <input
+          type="submit"
+          value="Add" />
+      </form>
+    </li>
+    <li
+      className="completed-false"
+      onClick={[Function]}>
+      Buy shoes
+       (
+      Private
+      ) 
+      <span
+        className="added">
+        added 
+        a month ago
+      </span>
+    </li>
+    <li
+      className="completed-false"
+      onClick={[Function]}>
+      Sell everything
+       (
+      Private
+      ) 
+      <span
+        className="added">
+        added 
+        5 days ago
+      </span>
+    </li>
+    <li
+      className="completed-true"
+      onClick={[Function]}>
+      Call the evangelist
+       (
+      Free time
+      ) 
+      <span
+        className="added">
+        added 
+        12 hours ago
+      </span>
+    </li>
+  </ul>
+</div>
+`;

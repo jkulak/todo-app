@@ -5,32 +5,31 @@ class TodoAdd extends React.Component {
     constructor() {
         super();
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.state = {
-            category: 0
-        }
+        this.handleFormSelectChange = this.handleFormSelectChange.bind(this);
+        this.handleFormInputChange = this.handleFormInputChange.bind(this);
+    }
+
+    initState() {
+        this.setState({
+            formCategory: 0,
+            formInput: "",
+        });
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        const title = this.refs.title.value;
-        const category = this.refs.category.value;
 
-        if (title !== "") {
-            this.props.addTodo(title, category);
-            this.refs.title.value = "";
-            this.refs.title.focus();
+        if (this.state.formInput !== "") {
+            this.props.addTodo(this.state.formInput, this.state.formCategory);
+            this.initState();
+            // this.refs.title.focus();
         } else {
             alert("Can't add an empty todo!");
         }
     }
 
-    handleChange() {
-        this.setState({category: this.refs.category.value});
-    }
-
-    componentDidMount() {
-        this.refs.title.focus();
+    componentWillMount() {
+        this.initState();
     }
 
     renderCategories() {
@@ -41,11 +40,25 @@ class TodoAdd extends React.Component {
         }
     }
 
+    handleFormInputChange(e) {
+        const text = e.target.value;
+        this.setState({
+            formInput: text
+        });
+    }
+
+    handleFormSelectChange(e) {
+        const category = e.target.value
+        this.setState({
+            formCategory: category
+        });
+    }
+
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <input type="text" ref="title" placeholder="Enter new todo..."/>
-                <select ref="category" value={this.state.category} onChange={this.handleChange}>
+                <input autoFocus type="text" value={this.state.formInput} placeholder="Enter new todo..." onChange={this.handleFormInputChange}/>
+                <select value={this.state.formCategory} onChange={this.handleFormSelectChange}>
                     {this.renderCategories()}
                 </select>
                 <input type="submit" value="Add" />
@@ -53,5 +66,10 @@ class TodoAdd extends React.Component {
         );
     };
 }
+
+TodoAdd.defaultProps = {
+    categories: [],
+    addTodo: () => {alert('Empty')},
+};
 
 export default TodoAdd;

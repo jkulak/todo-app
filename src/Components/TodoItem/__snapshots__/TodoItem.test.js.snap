@@ -1,0 +1,62 @@
+exports[`<TodoItem /> should attach an onclick handler passed in 1`] = `
+<li
+  className="completed-true"
+  onClick={[Function]}>
+  Call the evangelist
+   (
+  Free time
+  ) 
+  <span
+    className="added">
+    added 
+    a few seconds ago
+  </span>
+</li>
+`;
+
+exports[`<TodoItem /> should match its empty snapshot 1`] = `
+<li
+  className="completed-false"
+  onClick={[Function]}>
+  Empty todo
+   (
+  ) 
+  <span
+    className="added">
+    added 
+    a few seconds ago
+  </span>
+</li>
+`;
+
+exports[`<TodoItem /> should render a todo item with a classname 1`] = `
+<li
+  className="completed-true"
+  onClick={[Function]}>
+  Call the evangelist
+   (
+  Free time
+  ) 
+  <span
+    className="added">
+    added 
+    a few seconds ago
+  </span>
+</li>
+`;
+
+exports[`<TodoItem /> should render its children 1`] = `
+<li
+  className="completed-true"
+  onClick={[Function]}>
+  Call the evangelist
+   (
+  Free time
+  ) 
+  <span
+    className="added">
+    added 
+    a few seconds ago
+  </span>
+</li>
+`;

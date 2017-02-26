@@ -90,7 +90,11 @@ class TodoList extends React.Component {
                     return true;
             }
         }).map(v =>
-            <TodoItem key={v.id} categories={this.state.categories} todo={v} toggleDone={this.toggleDone}/>
+            <TodoItem
+                key={v.id}
+                categories={this.state.categories}
+                todo={v} toggleDone={this.toggleDone}
+            />
         );
     }
 
@@ -102,7 +106,12 @@ class TodoList extends React.Component {
 
     renderFilters() {
         return Object.keys(this.filters).map(v =>
-            <li key={v} className={this.state.filter === v ? "active" : ""} onClick={this.handleFilter.bind(this, v)}>{v}</li>
+            <li
+                key={v}
+                className={this.state.filter === v ? "active" : ""}
+                onClick={this.handleFilter.bind(this, v)}>
+                {v}
+            </li>
         );
     }
 
@@ -113,12 +122,32 @@ class TodoList extends React.Component {
                     {this.renderFilters()}
                 </ul>
                 <ul className="list">
-                    <li><TodoAdd addTodo={this.addTodo.bind(this)} categories={this.state.categories}/></li>
+                    <li>
+                        <TodoAdd
+                            addTodo={this.addTodo.bind(this)}
+                            categories={this.state.categories}
+                        />
+                    </li>
                     {this.renderTodos()}
                 </ul>
             </div>
         );
     };
 }
+
+TodoList.defaultProps = {
+  todo: {
+      title: "Empty todo",
+      category: 0,
+      added: moment(),
+      completed: false
+  },
+  categories: []
+};
+
+TodoList.propTypes = {
+  todo: React.PropTypes.object.isRequired,
+  categories: React.PropTypes.array.isRequired
+};
 
 export default TodoList;
