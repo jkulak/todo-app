@@ -69,7 +69,7 @@ exports[`<TodoList /> should match its empty snapshot 1`] = `
       <span
         className="added">
         added 
-        a month ago
+        2 months ago
       </span>
     </li>
     <li
@@ -82,7 +82,7 @@ exports[`<TodoList /> should match its empty snapshot 1`] = `
       <span
         className="added">
         added 
-        5 days ago
+        a month ago
       </span>
     </li>
     <li
@@ -95,7 +95,7 @@ exports[`<TodoList /> should match its empty snapshot 1`] = `
       <span
         className="added">
         added 
-        12 hours ago
+        a month ago
       </span>
     </li>
   </ul>

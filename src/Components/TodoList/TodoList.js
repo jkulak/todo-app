@@ -136,18 +136,18 @@ class TodoList extends React.Component {
 }
 
 TodoList.defaultProps = {
-  todo: {
-      title: "Empty todo",
-      category: 0,
-      added: moment(),
-      completed: false
-  },
-  categories: []
+    todo: {
+        title: "Empty todo",
+        category: 0,
+        added: moment(),
+        completed: false
+    },
+    categories: []
 };
 
 TodoList.propTypes = {
-  todo: React.PropTypes.object.isRequired,
-  categories: React.PropTypes.array.isRequired
+    todo: React.PropTypes.object.isRequired,
+    categories: React.PropTypes.array.isRequired
 };
 
 export default TodoList;
